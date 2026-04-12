@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$100K/Month Battle Plan — Atlanta Luxury Roofing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --dark: #0c0c0b;
+    --dark2: #141412;
+    --dark3: #1c1c1a;
+    --dark4: #242420;
+    --cream: #e8e2d9;
+    --muted: #8a8478;
+    --border: rgba(201,169,110,0.15);
+    --border-strong: rgba(201,169,110,0.3);
+    --green: #4caf78;
+    --red: #e05252;
+    --blue: #5b9bd5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: var(--cream);
+    line-height: 1.7;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #0c0c0b 0%, #141412 50%, #0c0c0b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(201,169,110,0.05) 0%, transparent 70%);
+  }
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .cover h1 span { color: var(--gold); }
+  .cover-sub {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 600px;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-stat { text-align: center; }
+  .cover-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .cover-stat-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .cover-line {
+    width: 80px;
+    height: 1px;
+    background: var(--border-strong);
+    margin: 0 auto 48px;
+  }
+  .cover-date {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* LAYOUT */
+  .doc-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 80px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+  .section-intro {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 760px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 80px 0;
+  }
+
+  /* THE BIG NUMBER */
+  .big-insight {
+    background: var(--dark3);
+    border: 1px solid var(--border-strong);
+    border-left: 4px solid var(--gold);
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+  .big-insight p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .big-insight strong { color: var(--gold); }
+
+  /* REVENUE MODEL */
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .rev-cell {
+    background: var(--dark2);
+    padding: 24px 28px;
+  }
+  .rev-cell.header {
+    background: var(--dark3);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 16px 28px;
+  }
+  .rev-cell.highlight {
+    background: rgba(201,169,110,0.08);
+  }
+  .rev-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .rev-label { font-size: 13px; color: var(--muted); }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--dark);
+    box-shadow: 0 0 0 3px rgba(201,169,110,0.2);
+  }
+  .timeline-month {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .timeline-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .timeline-body {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .timeline-mrr {
+    display: inline-block;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid var(--border-strong);
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .task-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    max-width: 720px;
+  }
+  .task-list li {
+    font-size: 14px;
+    color: var(--cream);
+    padding: 10px 14px;
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .task-list li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* CITY TABLE */
+  .city-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+  .city-table thead tr {
+    background: var(--dark3);
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .city-table thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .city-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .city-table tbody tr:hover { background: var(--dark3); }
+  .city-table tbody tr.featured {
+    background: rgba(201,169,110,0.05);
+    border-left: 3px solid var(--gold);
+  }
+  .city-table td {
+    padding: 14px 18px;
+    color: var(--cream);
+  }
+  .city-table td.muted { color: var(--muted); }
+  .city-table td.gold { color: var(--gold); font-weight: 600; }
+  .city-table td.green { color: var(--green); font-weight: 600; }
+  .rank-badge {
+    display: inline-block;
+    background: var(--dark4);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+  }
+  .rank-badge.featured {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+  }
+
+  /* CONTRACTOR PITCH */
+  .pitch-card {
+    background: var(--dark3);
+    border: 1px solid var(--border-strong);
+    padding: 40px;
+    margin-bottom: 24px;
+    border-radius: 2px;
+  }
+  .pitch-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .pitch-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .pitch-text strong {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .pitch-breakdown {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  /* REVENUE MODEL */
+  .model-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .model-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+  .model-card.recommended {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.05);
+  }
+  .model-card-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .model-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .model-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .model-card-rate {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .model-card-rate-sub {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+  }
+  .rec-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-top: 12px;
+  }
+
+  /* ACTION STEPS */
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .action-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 2px;
+  }
+  .action-card.critical {
+    border-color: rgba(224,82,82,0.4);
+    background: rgba(224,82,82,0.03);
+  }
+  .action-card.this-week {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.04);
+  }
+  .action-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--border-strong);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .action-card.this-week .action-num { color: rgba(201,169,110,0.3); }
+  .action-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .action-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .action-card .urgency {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .action-card.critical .urgency { background: rgba(224,82,82,0.15); color: var(--red); }
+  .action-card.this-week .urgency { background: rgba(201,169,110,0.15); color: var(--gold); }
+
+  /* MATH BOX */
+  .math-box {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+  .math-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+  .math-row:last-child { border-bottom: none; }
+  .math-row.total {
+    padding-top: 20px;
+    margin-top: 8px;
+  }
+  .math-label { color: var(--muted); }
+  .math-value { color: var(--cream); font-weight: 500; }
+  .math-value.gold { color: var(--gold); font-weight: 600; }
+  .math-row.total .math-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  .math-row.total .math-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .math-note {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* PROGRESS BAR */
+  .progress-section {
+    margin-bottom: 40px;
+  }
+  .progress-item {
+    margin-bottom: 20px;
+  }
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .progress-name { font-size: 14px; color: var(--cream); }
+  .progress-pct { font-size: 13px; color: var(--gold); font-weight: 600; }
+  .progress-track {
+    height: 4px;
+    background: var(--dark4);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  /* SEO SECTION */
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .seo-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 2px;
+  }
+  .seo-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .seo-card .timeline-month { margin-bottom: 12px; }
+  .seo-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .seo-card ul li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+  }
+  .seo-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .doc-footer p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .doc-footer strong { color: var(--gold); }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: rgba(201,169,110,0.06);
+    border: 1px solid var(--border-strong);
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    border-radius: 2px;
+  }
+  .highlight-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .highlight-box p strong { color: var(--cream); }
+
+  @media (max-width: 768px) {
+    .doc-body { padding: 40px 20px; }
+    .task-list { grid-template-columns: 1fr; }
+    .model-cards { grid-template-columns: 1fr; }
+    .action-grid { grid-template-columns: 1fr; }
+    .seo-grid { grid-template-columns: 1fr; }
+    .revenue-grid { grid-template-columns: 1fr; }
+    .city-table { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-eyebrow">Confidential — Strategic Plan</div>
+  <h1>The Path to<br><span>$100K/Month</span></h1>
+  <p class="cover-sub">Atlanta Luxury Roofing — From Launch to National Market Leader by August 2026</p>
+  <div class="cover-line"></div>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <span class="cover-stat-num">$100K</span>
+      <span class="cover-stat-label">Monthly Revenue Target</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">22</span>
+      <span class="cover-stat-label">Weeks to Get There</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">10</span>
+      <span class="cover-stat-label">Cities at Scale</span>
+    </div>
+    <div class="cover-stat">
+      <span class="cover-stat-num">30</span>
+      <span class="cover-stat-label">Contractor Partners</span>
+    </div>
+  </div>
+  <div class="cover-date">March 2026 — Prepared for Ken Wright</div>
+</div>
+
+<div class="doc-body">
+
+  <!-- THE CORE INSIGHT -->
+  <div class="section">
+    <div class="section-label">The Thesis</div>
+    <h2 class="section-title">Why This Business Wins</h2>
+    <div class="big-insight">
+      <p>Luxury roofing contractors do <strong>$40,000–$180,000 projects</strong> and most of them have terrible websites, zero SEO, and no idea what AI search even is. You're not competing with them — you're building the digital infrastructure they don't have, and renting it to them. <strong>One $120,000 standing seam job covers 40 months of territory fees.</strong></p>
+    </div>
+    <p class="section-intro">The model is simple: own the digital demand (rankings, leads, brand authority) for luxury roofing in a market, then rent exclusive access to that demand to the best local contractor. They close jobs. You collect a monthly retainer. As you add cities, the revenue stacks. The business compounds — each city you build makes the next one easier because you have case studies, systems, and proof.</p>
+
+    <div class="highlight-box">
+      <h3>The Critical Insight Most People Miss</h3>
+      <p>Don't wait for SEO to rank before you find your first contractor. <strong>Run Google Ads from day one.</strong> Generate real leads in Week 2. Walk into contractor meetings with actual proof. SEO takes 90–180 days to rank. Google Ads generates leads on Day 1. Use ads to sell your first contractor, use that revenue to fund more ads and content. SEO is the long-term moat — ads are the weapon to get you there.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REVENUE MODEL -->
+  <div class="section">
+    <div class="section-label">The Money</div>
+    <h2 class="section-title">How $100K/Month Is Built</h2>
+    <p class="section-intro">Three revenue streams, stacked across cities. The base retainer gives predictability. Performance bonuses reward success. Premium city-exclusive contracts command a premium for the right markets.</p>
+
+    <div class="model-cards">
+      <div class="model-card">
+        <span class="model-card-tag">Option 1</span>
+        <h3>Territory Retainer</h3>
+        <p>Contractor pays monthly for exclusive access to all leads in their territory. Predictable. Clean.</p>
+        <div class="model-card-rate">$2,500–$3,500<span class="model-card-rate-sub">per contractor / month</span></div>
+      </div>
+      <div class="model-card recommended">
+        <span class="model-card-tag">Option 2 — Recommended</span>
+        <h3>Retainer + Performance</h3>
+        <p>Lower base retainer plus 5% of each closed project. Aligns incentives. Higher upside for you both.</p>
+        <div class="model-card-rate">$2,000 base<span class="model-card-rate-sub">+ 5% per closed project</span></div>
+        <div class="rec-badge">Recommended</div>
+      </div>
+      <div class="model-card">
+        <span class="model-card-tag">Option 3</span>
+        <h3>City Exclusive</h3>
+        <p>One contractor owns an entire metro. Premium pricing. Fewer relationships, higher per-contract value.</p>
+        <div class="model-card-rate">$5,000–$8,000<span class="model-card-rate-sub">per city / month</span></div>
+      </div>
+    </div>
+
+    <div class="math-box">
+      <div class="math-row">
+        <span class="math-label">Atlanta (mature market, 4 contractor territories)</span>
+        <span class="math-value">$10,000–$14,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Dallas / Fort Worth (3 territories + performance)</span>
+        <span class="math-value">$9,000–$12,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Charlotte (3 territories)</span>
+        <span class="math-value">$8,000–$10,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Nashville (2 territories)</span>
+        <span class="math-value">$6,000–$8,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Denver (2 territories)</span>
+        <span class="math-value">$6,000–$8,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Washington DC / Northern Virginia (3 territories)</span>
+        <span class="math-value">$9,000–$12,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Houston (3 territories)</span>
+        <span class="math-value">$8,000–$10,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Phoenix / Scottsdale (3 territories)</span>
+        <span class="math-value">$8,000–$10,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Chicago North Shore (2 territories)</span>
+        <span class="math-value">$7,000–$9,000/mo</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Raleigh / Durham (2 territories)</span>
+        <span class="math-value">$5,000–$7,000/mo</span>
+      </div>
+      <div class="math-row total">
+        <span class="math-label">10-City Total Monthly Revenue</span>
+        <span class="math-value gold">$76,000–$100,000+</span>
+      </div>
+      <p class="math-note">Performance bonuses on closed luxury projects push the total above $100K. One $150K copper roof project at 5% = $7,500 in a single transaction.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 5-MONTH TIMELINE -->
+  <div class="section">
+    <div class="section-label">The Roadmap</div>
+    <h2 class="section-title">Month-by-Month Battle Plan</h2>
+    <p class="section-intro">Five months. Ten cities. Thirty contractors. Here is exactly how it happens.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-month">April 2026 — Month 1</div>
+        <div class="timeline-heading">Launch, Validate, Land First Customer</div>
+        <div class="timeline-body">Register AtlantaLuxuryRoofing.com. Deploy the site live on Netlify (free, 10 minutes). Set up Google Business Profile. Launch Google Ads targeting "luxury roofing Atlanta," "standing seam metal roof Atlanta," "slate roof installation Atlanta." Budget $75/day. By Week 3, you'll have 15–30 real leads. Walk into contractor meetings with printed proof. Sign your first paying contractor.</div>
+        <div class="timeline-mrr">Target MRR: $3,000 – $7,000</div>
+        <ul class="task-list">
+          <li>Register domain (today)</li>
+          <li>Deploy to Netlify / Cloudflare Pages</li>
+          <li>Set up Google Business Profile</li>
+          <li>Launch Google Ads ($75/day budget)</li>
+          <li>Set up CallRail call tracking</li>
+          <li>Build remaining Core 30 pages (Atlanta)</li>
+          <li>Identify 20 Atlanta luxury contractors</li>
+          <li>Sign first paying contractor</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-month">May 2026 — Month 2</div>
+        <div class="timeline-heading">Maximize Atlanta, Launch City #2</div>
+        <div class="timeline-body">Sign 2–3 more Atlanta contractor relationships (different zip code territories or specialty niches — one copper specialist, one slate specialist, one standing seam focus). Simultaneously, choose and launch City #2. Best candidates: Dallas, Charlotte, or Nashville — high luxury density, strong storm market, underserved SEO. Build the same Core 30 framework for City #2, launch ads immediately.</div>
+        <div class="timeline-mrr">Target MRR: $12,000 – $20,000</div>
+        <ul class="task-list">
+          <li>Sign 2–3 more Atlanta contractors</li>
+          <li>Choose and register City #2 domain</li>
+          <li>Build City #2 website (same framework)</li>
+          <li>Launch City #2 Google Ads</li>
+          <li>Hire VA for content/page building ($800/mo)</li>
+          <li>Start contractor outreach in City #2</li>
+          <li>Document all lead metrics (proof deck)</li>
+          <li>Set up contractor dashboard / reporting</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-month">June 2026 — Month 3</div>
+        <div class="timeline-heading">Three Cities Running, Systems Locked</div>
+        <div class="timeline-body">Cities #3 and #4 launching. Atlanta SEO is starting to produce organic leads (90 days in). The city launch playbook is now templated — build site → ads → leads in 2 weeks → contractor pitch with proof → sign. Bring on a second VA or part-time content writer to accelerate page building. The unit economics are proven: every city costs ~$2,000/month in ads and produces $6,000–$10,000 in contractor revenue.</div>
+        <div class="timeline-mrr">Target MRR: $30,000 – $45,000</div>
+        <ul class="task-list">
+          <li>Launch Cities #3 and #4</li>
+          <li>Atlanta organic SEO rankings arriving</li>
+          <li>Reduce Atlanta ad spend (SEO covering)</li>
+          <li>Hire content writer / second VA</li>
+          <li>Systemize the city launch playbook</li>
+          <li>Begin national hub pages (LuxuryRoofingUSA.com)</li>
+          <li>First performance bonus revenue</li>
+          <li>Review and optimize ad campaigns</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-month">July 2026 — Month 4</div>
+        <div class="timeline-heading">Six Cities, Mid-Six-Figures Pace</div>
+        <div class="timeline-body">Six to eight cities operating. The machine is running. Atlanta is now partially or fully organic — those ad dollars roll into new cities. Consider raising rates on new city launches ($3,500–$4,500/month) because you now have case studies and a track record. Begin building out the national content hub — material-specific pages (standing seam roofing, slate roofing, copper roofing) that rank nationally and funnel to city pages.</div>
+        <div class="timeline-mrr">Target MRR: $55,000 – $75,000</div>
+        <ul class="task-list">
+          <li>Cities #5, #6 launching</li>
+          <li>Raise rates on new markets ($3,500+)</li>
+          <li>National hub content live</li>
+          <li>Consider Cities #7 and #8</li>
+          <li>Begin premium city-exclusive pitches</li>
+          <li>Explore commercial/HOA luxury market</li>
+          <li>Build referral relationships (architects/designers)</li>
+          <li>Review financials — reinvest in ads</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-month">August 2026 — Month 5</div>
+        <div class="timeline-heading">Ten Cities. $100,000/Month.</div>
+        <div class="timeline-body">Ten cities running. Atlanta SEO is fully mature — zero ad spend, pure organic leads. Early cities are reducing ad dependency. The national hub is generating its own lead flow. Performance bonuses on 5–10 closed luxury projects per month add $15,000–$35,000 on top of base retainers. You own the luxury roofing space digitally in 10 markets and are the only operator doing this at scale.</div>
+        <div class="timeline-mrr">Target MRR: $85,000 – $110,000+</div>
+        <ul class="task-list">
+          <li>Cities #9 and #10 live</li>
+          <li>Atlanta fully organic (no ad spend)</li>
+          <li>Performance bonuses: $15K–$35K/mo</li>
+          <li>National hub ranking for major keywords</li>
+          <li>Team in place: 1–2 VAs, 1 writer</li>
+          <li>Explore franchise / license model</li>
+          <li>Begin national press / PR push</li>
+          <li>Map path to $250K/month — 25 cities</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CITY SELECTION -->
+  <div class="section">
+    <div class="section-label">Market Selection</div>
+    <h2 class="section-title">The 10 Cities — In Order</h2>
+    <p class="section-intro">Each city was selected based on luxury home density, average roof project value, number of qualifying contractors, and current SEO competition. Lower competition = faster rankings = faster contractor sign.</p>
+
+    <table class="city-table">
+      <thead>
+        <tr>
+          <th>Priority</th>
+          <th>Market</th>
+          <th>Key Luxury Neighborhoods</th>
+          <th>Avg Project Value</th>
+          <th>Why Now</th>
+          <th>Est. MRR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="featured">
+          <td><span class="rank-badge featured">1</span></td>
+          <td><strong>Atlanta, GA</strong></td>
+          <td class="muted">Buckhead, Milton, Alpharetta</td>
+          <td class="gold">$75K–$140K</td>
+          <td class="muted">Already building. Strong luxury market.</td>
+          <td class="green">$12,000–$16,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">2</span></td>
+          <td><strong>Dallas / Fort Worth</strong></td>
+          <td class="muted">Highland Park, Southlake, Westlake</td>
+          <td class="gold">$80K–$160K</td>
+          <td class="muted">Massive wealth, hail urgency, low SEO competition</td>
+          <td class="green">$10,000–$14,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">3</span></td>
+          <td><strong>Charlotte, NC</strong></td>
+          <td class="muted">Myers Park, Eastover, Ballantyne</td>
+          <td class="gold">$60K–$120K</td>
+          <td class="muted">Fast-growing wealth, similar to Atlanta</td>
+          <td class="green">$8,000–$11,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">4</span></td>
+          <td><strong>Nashville, TN</strong></td>
+          <td class="muted">Belle Meade, Brentwood, Franklin</td>
+          <td class="gold">$65K–$130K</td>
+          <td class="muted">Exploding luxury construction, few competitors</td>
+          <td class="green">$7,000–$10,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">5</span></td>
+          <td><strong>Denver, CO</strong></td>
+          <td class="muted">Cherry Hills, Castle Pines, Evergreen</td>
+          <td class="gold">$70K–$150K</td>
+          <td class="muted">Mountain aesthetic, standing seam extremely popular</td>
+          <td class="green">$7,000–$10,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">6</span></td>
+          <td><strong>DC / Northern Virginia</strong></td>
+          <td class="muted">McLean, Great Falls, Bethesda MD</td>
+          <td class="gold">$80K–$180K</td>
+          <td class="muted">Highest avg project values in US</td>
+          <td class="green">$10,000–$14,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">7</span></td>
+          <td><strong>Houston, TX</strong></td>
+          <td class="muted">River Oaks, Memorial, The Woodlands</td>
+          <td class="gold">$75K–$160K</td>
+          <td class="muted">Oil money, large estate homes, storm market</td>
+          <td class="green">$9,000–$12,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">8</span></td>
+          <td><strong>Phoenix / Scottsdale</strong></td>
+          <td class="muted">Paradise Valley, Arcadia, DC Ranch</td>
+          <td class="gold">$65K–$140K</td>
+          <td class="muted">High-end custom homes, warm climate = flat/low-slope luxury</td>
+          <td class="green">$8,000–$11,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">9</span></td>
+          <td><strong>Chicago / North Shore</strong></td>
+          <td class="muted">Lake Forest, Winnetka, Kenilworth</td>
+          <td class="gold">$70K–$150K</td>
+          <td class="muted">Historic luxury homes, slate/copper stronghold</td>
+          <td class="green">$8,000–$11,000</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">10</span></td>
+          <td><strong>Raleigh / Durham</strong></td>
+          <td class="muted">North Hills, Cary, Chapel Hill</td>
+          <td class="gold">$55K–$110K</td>
+          <td class="muted">Research Triangle wealth, underserved luxury roofing market</td>
+          <td class="green">$6,000–$8,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONTRACTOR PITCH -->
+  <div class="section">
+    <div class="section-label">Sales Strategy</div>
+    <h2 class="section-title">How to Sign Your First Contractor</h2>
+    <p class="section-intro">Don't sell "SEO" or "a website." Sell leads. Walk in with printed proof of calls and form submissions. The math is too obvious to say no to.</p>
+
+    <div class="pitch-card">
+      <div class="pitch-label">The Opening — Phone or In-Person</div>
+      <div class="pitch-text">
+        "I own a lead generation property called Atlanta Luxury Roofing. In the last 30 days, I've received <strong>23 inquiries</strong> from homeowners with budgets of $60,000 or more. I'm looking for one contractor to be the exclusive recipient of those leads in your territory. It's <strong>$3,000 a month</strong>, cancel anytime. Want to see the inquiry log?"
+      </div>
+      <div class="pitch-breakdown">
+        Why it works: You're not selling a promise — you're selling proof. By the time you have this conversation, you've already run Google Ads for 3–4 weeks and have real lead data to show. The contractor's mental math is instant: one $100K job at 35% margin = $35,000 gross. That's nearly a year of territory fees. The risk is completely asymmetric in their favor.
+      </div>
+    </div>
+
+    <div class="pitch-card">
+      <div class="pitch-label">Handling "How do I know these leads are real?"</div>
+      <div class="pitch-text">
+        "I'll show you the CallRail log — every number, every call recording, every timestamp. I'll give you the first month at <strong>$1,500</strong> as a trial. If you don't get at least one serious estimate opportunity in 30 days, I'll refund it. I haven't had to make that refund yet."
+      </div>
+      <div class="pitch-breakdown">
+        Trial close structure: $1,500 trial month removes all objection to getting started. Once they close one $80K job in Month 1, they'll sign a 6-month contract at full rate without hesitation. The trial is the conversion mechanism.
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h3>Who to Target First</h3>
+      <p>Look for luxury roofing contractors who have <strong>good reviews but a bad website</strong>. This is your ideal customer. They do great work, homeowners love them, but they have zero digital presence. Search "standing seam metal roof Atlanta" and "slate roof Atlanta" — find the contractors on Page 2 and 3 of Google. They're doing the work, they just can't be found. That's your customer. <strong>They already want leads. They just don't know how to get them digitally.</strong></p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SEO + CONTENT PLAN -->
+  <div class="section">
+    <div class="section-label">Digital Authority</div>
+    <h2 class="section-title">The SEO & AI Engine</h2>
+    <p class="section-intro">The Core 30 framework (Caleb Ulku) gives each city topical authority. AI SEO structures ensure ChatGPT, Perplexity, and Google AI Overviews cite your pages. This is a 3–6 month build that produces leads for years with zero ad spend.</p>
+
+    <div class="seo-grid">
+      <div class="seo-card">
+        <div class="timeline-month">Ring 1 — Foundation (8 pages)</div>
+        <h3>Core Service Pages</h3>
+        <ul>
+          <li>Atlanta Luxury Roofing (homepage)</li>
+          <li>Standing Seam Metal Roofing Atlanta</li>
+          <li>Natural Slate Roofing Atlanta</li>
+          <li>Copper Roofing Atlanta</li>
+          <li>Cedar Shake Roofing Atlanta</li>
+          <li>Luxury Roof Replacement Atlanta</li>
+          <li>Architectural Roofing Atlanta</li>
+          <li>Luxury Roofing Contractor Atlanta</li>
+        </ul>
+      </div>
+      <div class="seo-card">
+        <div class="timeline-month">Ring 2 — Neighborhood (8 pages)</div>
+        <h3>Local Geo Pages</h3>
+        <ul>
+          <li>Luxury Roofing Buckhead</li>
+          <li>Luxury Roofing Milton GA</li>
+          <li>Luxury Roofing Alpharetta</li>
+          <li>Luxury Roofing Sandy Springs</li>
+          <li>Luxury Roofing Dunwoody</li>
+          <li>Luxury Roofing Vinings</li>
+          <li>Luxury Roofing Ansley Park</li>
+          <li>Luxury Roofing Druid Hills</li>
+        </ul>
+      </div>
+      <div class="seo-card">
+        <div class="timeline-month">Ring 3 — Buyer Education (8 pages)</div>
+        <h3>AI SEO / Research Phase</h3>
+        <ul>
+          <li>Standing Seam Metal Roof Cost Atlanta ✓</li>
+          <li>Natural Slate Roof Cost Atlanta</li>
+          <li>Copper Roof Cost Atlanta</li>
+          <li>Standing Seam vs. Slate: Which Is Right?</li>
+          <li>How Long Does a Metal Roof Last?</li>
+          <li>Best Roofing Materials for Atlanta Climate</li>
+          <li>How to Choose a Luxury Roofer</li>
+          <li>Luxury Roof Installation Process</li>
+        </ul>
+      </div>
+      <div class="seo-card">
+        <div class="timeline-month">Ring 4 — Authority / Trust (6 pages)</div>
+        <h3>E-E-A-T Signals</h3>
+        <ul>
+          <li>About Atlanta Luxury Roofing</li>
+          <li>Our Project Portfolio</li>
+          <li>Client Testimonials</li>
+          <li>Luxury Roofing Certifications</li>
+          <li>Roofing Warranties Explained</li>
+          <li>Atlanta Luxury Roofing Blog</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h3>AI SEO — The Unfair Advantage</h3>
+      <p>Every buyer education page is structured with <strong>Quick Answer boxes</strong> (direct dollar amounts in the first 100 words), <strong>FAQ schema markup</strong>, and <strong>specific numerical claims</strong> that AI tools can extract and cite. When someone asks ChatGPT "how much does a standing seam metal roof cost in Atlanta," your page answers it completely, specifically, and confidently — making it the source ChatGPT cites. <strong>This is a gap no roofing contractor in the US is currently filling.</strong></p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHAT YOU NEED TO DO THIS WEEK -->
+  <div class="section">
+    <div class="section-label">Immediate Action</div>
+    <h2 class="section-title">This Week's Non-Negotiables</h2>
+    <p class="section-intro">The difference between this being a plan and a business is what you do in the next 7 days. These five actions cost less than $500 and start the clock on your first paying customer.</p>
+
+    <div class="action-grid">
+      <div class="action-card this-week">
+        <div class="action-num">01</div>
+        <h3>Register AtlantaLuxuryRoofing.com</h3>
+        <p>Check availability on Namecheap or GoDaddy. If taken, go with LuxuryRoofingAtlanta.com or EliteRoofingAtlanta.com. Budget: $12–$15/year. Do this today.</p>
+        <span class="urgency">Today</span>
+      </div>
+      <div class="action-card this-week">
+        <div class="action-num">02</div>
+        <h3>Deploy the Site Live on Netlify</h3>
+        <p>Free hosting. Drag and drop the HTML files. Your site is live in 10 minutes with HTTPS. Connect your domain in the DNS settings (Namecheap tutorial takes 5 minutes).</p>
+        <span class="urgency">Day 1–2</span>
+      </div>
+      <div class="action-card this-week">
+        <div class="action-num">03</div>
+        <h3>Create Google Business Profile</h3>
+        <p>Go to business.google.com and claim "Atlanta Luxury Roofing." Use a real Atlanta address (home office is fine). Verification takes 5–7 days. Start the clock now — GBP is 32% of local rankings.</p>
+        <span class="urgency">Day 1–3</span>
+      </div>
+      <div class="action-card this-week">
+        <div class="action-num">04</div>
+        <h3>Set Up CallRail Phone Tracking</h3>
+        <p>$45/month. Every call to your site gets logged, recorded, and tagged. This is your proof deck for contractor pitches. Without call tracking you have no proof. This is critical before you launch ads.</p>
+        <span class="urgency">Day 2–3</span>
+      </div>
+      <div class="action-card critical">
+        <div class="action-num">05</div>
+        <h3>Launch Google Ads — $75/Day</h3>
+        <p>Campaigns: "standing seam metal roof Atlanta," "luxury roofing Atlanta," "slate roof Atlanta." Match type: phrase match. Target: homeowners aged 35–65, household income top 30%, Atlanta metro. This generates your first leads within 48 hours of going live.</p>
+        <span class="urgency">Day 3–5</span>
+      </div>
+      <div class="action-card critical">
+        <div class="action-num">06</div>
+        <h3>Build a List of 20 Luxury Contractors</h3>
+        <p>Search "standing seam metal roof Atlanta" and "slate roof contractor Atlanta." Find contractors on Page 2–3 of Google (doing great work, terrible SEO). These are your buyers. Build a spreadsheet: name, phone, website quality score, review count.</p>
+        <span class="urgency">Day 4–7</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INVESTMENT REQUIRED -->
+  <div class="section">
+    <div class="section-label">The Investment</div>
+    <h2 class="section-title">What This Costs to Build</h2>
+    <p class="section-intro">This business is lean. Most of the cost is Google Ads, which is revenue-generating from day one. The goal is to get your first contractor signed before the ad spend becomes a burden.</p>
+
+    <div class="math-box">
+      <div class="math-row">
+        <span class="math-label">Domain registration (AtlantaLuxuryRoofing.com)</span>
+        <span class="math-value">$15 / year</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Hosting (Netlify free tier)</span>
+        <span class="math-value">$0 / month</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Google Ads — Month 1 (Atlanta only)</span>
+        <span class="math-value">$2,250 / month</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">CallRail call tracking</span>
+        <span class="math-value">$45 / month</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Google Workspace (business email)</span>
+        <span class="math-value">$6 / month</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Month 1 Total Investment</span>
+        <span class="math-value">~$2,316</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">First contractor signed (target: end of April)</span>
+        <span class="math-value gold">+$3,000/month</span>
+      </div>
+      <div class="math-row total">
+        <span class="math-label">Net position after first contractor</span>
+        <span class="math-value gold">+$684/month</span>
+      </div>
+      <p class="math-note">The business is cash-flow positive after the first contractor signs. Every subsequent contractor adds pure margin. Ad spend per city eventually goes to $0 as SEO takes over.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHAT CLAUDE BUILDS -->
+  <div class="section">
+    <div class="section-label">Work Already Done</div>
+    <h2 class="section-title">Your Current Assets</h2>
+    <p class="section-intro">You're not starting from zero. Here's what's already built and what's next in the queue.</p>
+
+    <div class="progress-section">
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">Atlanta Luxury Roofing — Main Site (atlanta-luxury-roofing.html)</span>
+          <span class="progress-pct">100%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">Core 30 Page #1 — Standing Seam Metal Roof Cost Atlanta</span>
+          <span class="progress-pct">100%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">Core 30 Pages — Buyer Education (7 remaining)</span>
+          <span class="progress-pct">12%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:12%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">Core 30 Pages — Neighborhood (8 pages)</span>
+          <span class="progress-pct">0%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">Core 30 Pages — Foundation Service Pages (7 remaining)</span>
+          <span class="progress-pct">14%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:14%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">Core 30 Pages — Authority / Trust (6 pages)</span>
+          <span class="progress-pct">0%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span class="progress-name">City #2–10 Websites</span>
+          <span class="progress-pct">0%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h3>The Build Plan — Sessions with Claude</h3>
+      <p>Each session, we build 2–4 Core 30 pages or a full new city website. Atlanta's 30 pages take roughly 10–12 sessions to complete. Each additional city reuses the same framework — swap city names, update pricing data, adjust neighborhood references. A full city site can be templated in 2–3 sessions once the system is built. <strong>At 3 sessions per week, Atlanta is fully built in 4 weeks. City #2 in week 6. By August, all 10 cities have full content stacks.</strong></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <p>Prepared for <strong>Ken Wright</strong> — Atlanta Luxury Roofing<br>
+  March 2026 — Confidential Strategic Plan<br>
+  <strong>First paying customer target: April 30, 2026 &nbsp;|&nbsp; $100K MRR target: August 31, 2026</strong></p>
+</div>
+
+</body>
+</html>
