@@ -1,0 +1,1078 @@
+#!/usr/bin/env python3
+"""
+Generate About page for Atlanta Luxury Roofing
+Creates about-atlanta-luxury-roofing.html with luxury brand positioning
+"""
+
+import os
+from pathlib import Path
+
+
+def escape_quotes(text):
+    """Escape double quotes for HTML attribute context"""
+    return text.replace('"', '&quot;')
+
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Atlanta Luxury Roofing | Specialty Roofing for High-End Homes</title>
+  <meta name="description" content="18 years serving Atlanta luxury homes. Specialists in slate, copper, and standing seam metal roofing for estates $800K+. Premium materials, expert craftsmanship, proven warranties." />
+  <link rel="canonical" href="https://atlantaluxuryroofing.com/about-atlanta-luxury-roofing" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #141210;
+      color: #e8e2d9;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+
+    .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c9a96e;
+    }
+
+    :root {
+      --gold:    #c9a96e;
+      --gold-lt: #dbbf8a;
+      --ink:     #141210;
+      --cream:   #e8e2d9;
+      --light:   #faf8f5;
+      --muted:   #8c8478;
+      --border:  rgba(201,169,110,0.15);
+    }
+
+    /* ── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(20,18,16,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(2px);
+      transition: background 0.3s, padding 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(20,18,16,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 56px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a09890;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-phone {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+    .nav-phone a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-phone a:hover { color: var(--gold-lt); }
+    .nav-phone span {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 56px 100px;
+      overflow: hidden;
+      margin-top: 0;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1541123603104-852bfd9d4c3f?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center 35%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(20,18,16,0.2) 0%,
+        rgba(20,18,16,0.50) 45%,
+        rgba(20,18,16,0.93) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 740px;
+    }
+    .hero-content .label { margin-bottom: 20px; display: block; }
+    .hero-content h1 {
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 26px;
+    }
+    .hero-content h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero-content p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #c0b9b0;
+      max-width: 540px;
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px; right: 56px;
+      display: flex; align-items: center; gap: 12px;
+      z-index: 2;
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-line { width: 48px; height: 1px; background: var(--muted); }
+
+    /* ── TRUST BAR ─────────────────────────────────────────────── */
+    .trust-bar {
+      background: #1e1d1a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 56px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .trust-item {
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 0 16px;
+      border-right: 1px solid var(--border);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 300;
+      color: var(--gold); line-height: 1; margin-bottom: 6px;
+    }
+    .trust-desc {
+      font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ── SECTIONS ──────────────────────────────────────────────── */
+    .section { padding: 110px 56px; }
+
+    /* ── STORY SECTION ─────────────────────────────────────────── */
+    .story {
+      background: #141210;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .story-text h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      font-weight: 300; color: var(--cream);
+      margin-bottom: 28px; margin-top: 14px;
+    }
+    .story-text p {
+      color: #a09890; font-weight: 300;
+      margin-bottom: 20px; font-size: 0.97rem; line-height: 1.8;
+    }
+    .story-text p strong { color: var(--cream); font-weight: 500; }
+    .gold-rule { width: 48px; height: 1px; background: var(--gold); margin: 32px 0; }
+    .story-image { position: relative; }
+    .story-image img { width: 100%; height: 520px; object-fit: cover; }
+    .story-image-badge {
+      position: absolute; bottom: -24px; left: -24px;
+      background: #1e1d1a; border: 1px solid var(--border);
+      padding: 24px 28px;
+    }
+    .story-image-badge .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .story-image-badge .txt {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-top: 4px;
+    }
+
+    /* ── SPECIALTY MATTERS ─────────────────────────────────────── */
+    .specialty { background: #1e1d1a; }
+    .specialty h2 {
+      font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--cream);
+      text-align: center; margin-top: 14px; margin-bottom: 56px;
+    }
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .specialty-card {
+      background: #141210; border: 1px solid var(--border);
+      padding: 48px 36px; display: flex; flex-direction: column;
+    }
+    .specialty-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 400; color: var(--cream);
+      margin-bottom: 16px; margin-top: 0;
+    }
+    .specialty-card .label {
+      display: block; margin-bottom: 16px;
+    }
+    .specialty-card p {
+      color: #a09890; font-weight: 300; font-size: 0.95rem;
+      line-height: 1.8; margin-bottom: 0;
+    }
+
+    /* ── SERVICE AREA ──────────────────────────────────────────── */
+    .service-area { background: #141210; text-align: center; }
+    .service-area h2 {
+      font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--cream);
+      margin-top: 14px; margin-bottom: 16px;
+    }
+    .service-area > p {
+      color: var(--muted); font-weight: 300; max-width: 520px;
+      margin: 0 auto; font-size: 0.97rem;
+    }
+    .neighborhood-grid {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center; margin-top: 48px;
+    }
+    .neighborhood-tag {
+      border: 1px solid var(--border); padding: 10px 22px;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #a09890; transition: border-color 0.25s, color 0.25s; cursor: default;
+    }
+    .neighborhood-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── VALUES SECTION ────────────────────────────────────────── */
+    .values {
+      background: #0c0c0b;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .values h2 {
+      font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--cream);
+      margin-top: 14px; margin-bottom: 48px; text-align: center;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+    .value-item {
+      display: flex; gap: 24px;
+    }
+    .value-icon {
+      width: 56px; height: 56px; flex-shrink: 0;
+      border: 1px solid var(--gold); display: flex;
+      align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.4rem;
+    }
+    .value-content h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .value-content p {
+      color: #a09890; font-weight: 300; font-size: 0.95rem; line-height: 1.8;
+    }
+
+    /* ── QUOTE SECTION ─────────────────────────────────────────── */
+    .quote-section {
+      background: #141210;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .quote-left {
+      padding: 100px 64px;
+      background: #1e1d1a;
+      border-right: 1px solid var(--border);
+    }
+    .quote-left h2 {
+      font-size: clamp(2rem, 2.8vw, 2.8rem); font-weight: 300;
+      color: var(--cream); margin-bottom: 20px; margin-top: 14px;
+    }
+    .quote-left p {
+      font-size: 0.95rem; font-weight: 300; color: var(--muted);
+      line-height: 1.8; margin-bottom: 40px;
+    }
+    .promise-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .promise-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 0.88rem; font-weight: 300; color: #a09890; line-height: 1.5;
+    }
+    .promise-icon {
+      width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px;
+      border: 1px solid var(--gold); display: flex;
+      align-items: center; justify-content: center;
+    }
+    .promise-icon::after {
+      content: '';
+      width: 7px; height: 7px; background: var(--gold);
+    }
+    .quote-right { padding: 100px 64px; }
+    .quote-right h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 400; color: var(--cream); margin-bottom: 32px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: #141210; border: 1px solid rgba(255,255,255,0.1);
+      color: var(--cream); font-family: 'Inter', sans-serif;
+      font-size: 0.92rem; font-weight: 300;
+      padding: 14px 16px; outline: none;
+      transition: border-color 0.25s; appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { height: 100px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-select-wrapper { position: relative; }
+    .form-select-wrapper::after {
+      content: '▾'; position: absolute; right: 16px; top: 50%;
+      transform: translateY(-50%); color: var(--gold);
+      pointer-events: none; font-size: 0.8rem;
+    }
+    .form-select-wrapper select option { background: #1e1d1a; }
+    .form-submit { width: 100%; margin-top: 8px; }
+    .form-note { margin-top: 12px; font-size: 0.7rem; color: var(--muted); text-align: center; }
+    .form-success { display: none; text-align: center; padding: 48px 0; }
+    .form-success.show { display: block; }
+    .quote-form.hide { display: none; }
+    .success-icon {
+      width: 56px; height: 56px; border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; font-size: 1.4rem; color: var(--gold);
+    }
+    .form-success h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 400; color: var(--cream); margin-bottom: 12px;
+    }
+    .form-success p { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
+
+    /* ── FAQ ───────────────────────────────────────────────────── */
+    .faq { background: #1e1d1a; }
+    .faq h2 { font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--cream); margin-top: 14px; margin-bottom: 48px; }
+    .faq-list { max-width: 820px; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .faq-question {
+      width: 100%; background: none; border: none; text-align: left;
+      padding: 24px 0; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px; cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 400; color: var(--cream);
+    }
+    .faq-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border: 1px solid var(--border); display: flex;
+      align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem; line-height: 1;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p { padding: 0 0 24px; font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+
+    /* ── CONTACT BAR ───────────────────────────────────────────── */
+    .contact-bar {
+      background: var(--gold);
+      padding: 40px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .contact-bar-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 400; color: var(--ink);
+      line-height: 1.2;
+    }
+    .contact-bar-text p { font-size: 0.85rem; color: rgba(20,18,16,0.65); margin-top: 4px; }
+    .contact-bar-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .btn-dark {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 16px 36px; text-decoration: none;
+      transition: background 0.25s;
+    }
+    .btn-dark:hover { background: #1e1d1a; }
+    .contact-bar-phone {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; color: var(--ink);
+      text-decoration: none; letter-spacing: 0.04em;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: #1e1d1a;
+      border-top: 1px solid var(--border);
+      padding: 72px 56px 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .footer-brand .nav-logo { font-size: 1.2rem; display: block; margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.84rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
+    .footer-col h5 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-bottom p {
+      font-size: 0.73rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .footer-license {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(140,132,120,0.55);
+      text-align: right;
+    }
+
+    @media (max-width: 1200px) {
+      .story { grid-template-columns: 1fr; gap: 40px; }
+      .specialty-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .quote-section { grid-template-columns: 1fr; }
+      .quote-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .trust-bar { grid-template-columns: repeat(2, 1fr); }
+      .trust-item { border-right: none; border-bottom: 1px solid var(--border); padding: 16px 0; }
+      .trust-item:nth-child(2n) { border-right: none; }
+      nav { padding: 16px 32px; }
+      .hero { padding: 0 32px 80px; }
+      .section { padding: 80px 32px; }
+      .quote-left, .quote-right { padding: 64px 32px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Article", "LocalBusiness"],
+    "name": "Atlanta Luxury Roofing",
+    "description": "Specialty roofing company serving high-end Atlanta homes with slate, copper, and standing seam metal roofing.",
+    "url": "https://atlantaluxuryroofing.com/about-atlanta-luxury-roofing",
+    "image": "https://images.unsplash.com/photo-1541123603104-852bfd9d4c3f?auto=format&fit=crop&w=1200&q=80",
+    "author": {
+      "@type": "Organization",
+      "name": "Atlanta Luxury Roofing",
+      "url": "https://atlantaluxuryroofing.com",
+      "logo": "https://atlantaluxuryroofing.com/logo.png"
+    },
+    "datePublished": "2024-01-15",
+    "dateModified": "2026-04-16",
+    "articleBody": "18 years of specialty roofing expertise serving Atlanta's luxury market.",
+    "areaServed": ["Buckhead", "Milton", "Alpharetta", "Roswell", "Sandy Springs", "Marietta", "Johns Creek", "Dunwoody", "Atlanta", "Decatur", "Peachtree Hills", "Ansley Villa", "Vinings", "Druid Hills"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Atlanta",
+      "addressLocality": "Atlanta",
+      "addressRegion": "GA",
+      "postalCode": "30305",
+      "addressCountry": "US"
+    },
+    "sameAs": "https://atlantaluxuryroofing.com",
+    "priceRange": "$40000-$180000"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://atlantaluxuryroofing.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://atlantaluxuryroofing.com/about-atlanta-luxury-roofing"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="site-nav">
+  <a href="/" class="nav-logo">Atlanta <span>Luxury</span> Roofing</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about-atlanta-luxury-roofing">About</a></li>
+    <li><a href="/#materials">Materials</a></li>
+    <li><a href="/luxury-roofing-alpharetta">Service Areas</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-phone">
+    <a href="tel:+14045551234">(404) 555-1234</a>
+    <span>Call for Quote</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="label">About Us</span>
+    <h1>Who We Are</h1>
+    <p>Eighteen years of specialty roofing expertise. Serving Atlanta's most discerning homeowners with materials and craftsmanship that elevate the standard.</p>
+    <div style="margin-top: 32px;">
+      <a href="#quote" class="btn-primary">Get a Quote</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-number">18</div>
+    <div class="trust-desc">Years in Atlanta Market</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number">500+</div>
+    <div class="trust-desc">Luxury Homes Served</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number">$0</div>
+    <div class="trust-desc">Insurance Work</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number">10yr</div>
+    <div class="trust-desc">Workmanship Warranty</div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section story">
+  <div class="story-text">
+    <h2>Founded for Luxury</h2>
+    <p>Atlanta's high-end homes demand specialists, not generalists. When we started, general contractors were cutting corners on $1M+ estates—using standard techniques on premium materials like slate, copper, and standing seam metal.</p>
+    <div class="gold-rule"></div>
+    <p>We founded Atlanta Luxury Roofing to serve an underserved market: homeowners with <strong>exacting standards and premium budgets</strong>. For 18 years, we've built relationships with specialty material suppliers in Vermont, copper fabricators, and review boards across 14 Atlanta jurisdictions.</p>
+    <p style="margin-top: 28px; color: var(--cream); font-size: 1rem;"><strong>We only work on materials that matter.</strong> The rest of the market can keep commodity projects. We specialize in the homes that require it.</p>
+  </div>
+  <div class="story-image">
+    <img src="https://images.unsplash.com/photo-1541123603104-852bfd9d4c3f?auto=format&fit=crop&w=800&h=600&q=80" alt="Luxury slate roof detail" />
+    <div class="story-image-badge">
+      <div class="num">18</div>
+      <div class="txt">Years &amp; Counting</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SPECIALTY MATTERS -->
+<section class="section specialty">
+  <h2>Why Specialty Matters</h2>
+  <div class="specialty-grid">
+    <div class="specialty-card">
+      <span class="label">Material Expertise</span>
+      <h3>Deep Training</h3>
+      <p>Slate isn't installed like asphalt. Copper develops patina in ways that require understanding metallurgy. Standing seam metal has specific expansion dynamics. We train on each material's behavior, not just nailing technique.</p>
+    </div>
+    <div class="specialty-card">
+      <span class="label">Permit & HOA</span>
+      <h3>14 Jurisdictions</h3>
+      <p>Buckhead has different requirements than Johns Creek. Historic districts add complexity. We navigate permit offices, historic preservation boards, and strict HOA review processes—often before the project even starts.</p>
+    </div>
+    <div class="specialty-card">
+      <span class="label">Supply Chain</span>
+      <h3>Direct Relationships</h3>
+      <p>Vermont slate quarries, copper fabricators, DaVinci synthetic slate suppliers—we maintain direct relationships that ensure material quality, custom options, and reliable delivery for premium homes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="section service-area">
+  <h2>Serving Atlanta's Premium Neighborhoods</h2>
+  <p>We operate exclusively in Atlanta's highest-value residential areas, where homeowners expect specialist-level service.</p>
+  <div class="neighborhood-grid">
+    <span class="neighborhood-tag">Buckhead</span>
+    <span class="neighborhood-tag">Milton</span>
+    <span class="neighborhood-tag">Alpharetta</span>
+    <span class="neighborhood-tag">Roswell</span>
+    <span class="neighborhood-tag">Sandy Springs</span>
+    <span class="neighborhood-tag">Marietta</span>
+    <span class="neighborhood-tag">Johns Creek</span>
+    <span class="neighborhood-tag">Dunwoody</span>
+    <span class="neighborhood-tag">Atlanta</span>
+    <span class="neighborhood-tag">Decatur</span>
+    <span class="neighborhood-tag">Peachtree Hills</span>
+    <span class="neighborhood-tag">Ansley Villa</span>
+    <span class="neighborhood-tag">Vinings</span>
+    <span class="neighborhood-tag">Druid Hills</span>
+  </div>
+</section>
+
+<!-- VALUES & APPROACH -->
+<section class="section values">
+  <h2>Our Standard</h2>
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="value-icon">✓</div>
+      <div class="value-content">
+        <h3>No Subcontracting Skilled Work</h3>
+        <p>The roofing work you're paying for—the flashing, the sealing, the material-specific techniques—is done by our crews. We don't pass that expertise to third parties.</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">✓</div>
+      <div class="value-content">
+        <h3>Copper Flashing Standard</h3>
+        <p>On every project, copper flashing comes standard. It lasts as long as the roof itself and looks the part. We don't cut corners on the details that matter.</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">✓</div>
+      <div class="value-content">
+        <h3>Written Scope Before Work</h3>
+        <p>No surprises. Every project begins with a detailed scope of work that specifies materials, timeline, and deliverables in writing. You know exactly what you're getting.</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="value-icon">✓</div>
+      <div class="value-content">
+        <h3>You Own the Warranty</h3>
+        <p>The warranty documentation is yours. It transfers with the home. It's not contingent on future service contracts or locked behind our business relationship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE SECTION -->
+<section class="quote-section" id="quote">
+  <div class="quote-left">
+    <h2>Get Your Project Scope</h2>
+    <p>Tell us about your home and your roofing needs. We'll review it with the precision of a specialist and get back to you with a detailed scope and quote.</p>
+    <ul class="promise-list">
+      <li>
+        <span class="promise-icon"></span>
+        <span>Free quote with detailed scope</span>
+      </li>
+      <li>
+        <span class="promise-icon"></span>
+        <span>Specialist consultation included</span>
+      </li>
+      <li>
+        <span class="promise-icon"></span>
+        <span>No pressure, no sales calls</span>
+      </li>
+      <li>
+        <span class="promise-icon"></span>
+        <span>24-hour response time</span>
+      </li>
+    </ul>
+  </div>
+  <div class="quote-right">
+    <h3>Request a Quote</h3>
+    <form class="quote-form" id="quote-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <div class="form-group">
+          <label for="neighborhood">Neighborhood</label>
+          <div class="form-select-wrapper">
+            <select id="neighborhood" name="neighborhood">
+              <option value="">Select a neighborhood</option>
+              <option value="Buckhead">Buckhead</option>
+              <option value="Milton">Milton</option>
+              <option value="Alpharetta">Alpharetta</option>
+              <option value="Roswell">Roswell</option>
+              <option value="Sandy Springs">Sandy Springs</option>
+              <option value="Marietta">Marietta</option>
+              <option value="Johns Creek">Johns Creek</option>
+              <option value="Dunwoody">Dunwoody</option>
+              <option value="Atlanta">Atlanta</option>
+              <option value="Decatur">Decatur</option>
+              <option value="Peachtree Hills">Peachtree Hills</option>
+              <option value="Ansley Villa">Ansley Villa</option>
+              <option value="Vinings">Vinings</option>
+              <option value="Druid Hills">Druid Hills</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="project-type">Project Type</label>
+        <div class="form-select-wrapper">
+          <select id="project-type" name="project_type">
+            <option value="">Select project type</option>
+            <option value="New roof">New Roof Installation</option>
+            <option value="Roof replacement">Roof Replacement</option>
+            <option value="Repair">Roof Repair</option>
+            <option value="Inspection">Roof Inspection</option>
+            <option value="Restoration">Roof Restoration</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="material-interest">Material Interest (if any)</label>
+        <div class="form-select-wrapper">
+          <select id="material-interest" name="material_interest">
+            <option value="">Select a material or unsure</option>
+            <option value="Slate">Slate</option>
+            <option value="Copper">Copper</option>
+            <option value="Standing seam metal">Standing Seam Metal</option>
+            <option value="Cedar shake">Cedar Shake</option>
+            <option value="Synthetic slate">Synthetic Slate</option>
+            <option value="Not sure">Not Sure</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project, timeline, and any specific concerns..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit">Request Quote</button>
+      <p class="form-note">We respond within 24 hours</p>
+    </form>
+    <div class="form-success" id="form-success">
+      <div class="success-icon">✓</div>
+      <h3>Quote Request Received</h3>
+      <p>Thank you. Our roofing specialists will review your project and contact you within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        What materials do you specialize in?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>We specialize in premium materials: slate roofing (natural and synthetic), copper roofing, standing seam metal, and cedar shake. These are the materials that belong on $800K+ homes in Atlanta. We don't install commodity materials—that's not our market.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Do you work outside your listed service areas?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Occasionally, if a project aligns with our specialty and is within Greater Atlanta. But our focus is the neighborhoods where premium materials and permit complexity justify specialist expertise. Contact us to discuss your location.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        What's your warranty coverage?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>We offer a 10-year workmanship warranty on all installations. The warranty is transferable and documented in writing. Material warranties vary by product and come from the manufacturer—we help you understand what's covered and for how long.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I know if I need a new roof vs. repair?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>A specialist inspection tells the story. We'll evaluate the roof's structure, material integrity, flashing condition, and remaining lifespan. Some roofs are worth repairing; others are due for replacement. We'll give you the honest assessment.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Why don't you do insurance claim work?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Insurance claim work often comes with cost pressures and scope limits that conflict with our specialty approach. We prefer to work directly with homeowners who prioritize quality over minimizing insurance claims. That alignment produces better outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BAR -->
+<section class="contact-bar" id="contact">
+  <div class="contact-bar-text">
+    <h3>Ready to discuss your project?</h3>
+    <p>Our specialists are ready to review your roof and create a detailed scope.</p>
+  </div>
+  <div class="contact-bar-actions">
+    <a href="tel:+14045551234" class="contact-bar-phone">(404) 555-1234</a>
+    <a href="#quote" class="btn-dark">Get a Quote</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="/" class="nav-logo">Atlanta <span>Luxury</span> Roofing</a>
+      <p>Specialty roofing for Atlanta's most discerning homeowners. Slate, copper, and standing seam metal for homes that demand the best.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about-atlanta-luxury-roofing">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="/best-roofing-material-luxury-home-atlanta">Material Guide</a></li>
+        <li><a href="/how-long-does-a-slate-roof-last">Slate Roofing</a></li>
+        <li><a href="/copper-roofing-atlanta">Copper Roofing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+14045551234">(404) 555-1234</a></li>
+        <li><a href="mailto:hello@atlantaluxuryroofing.com">hello@atlantaluxuryroofing.com</a></li>
+        <li>Atlanta, GA 30305</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Atlanta Luxury Roofing. All rights reserved.</p>
+    <p class="footer-license">Specializing in premium roofing since 2006.</p>
+  </div>
+</footer>
+
+<!-- FORM HANDLING & SCRIPTS -->
+<script>
+  // Hero background lazy load
+  const heroBg = document.querySelector('.hero-bg');
+  window.addEventListener('load', () => {
+    heroBg.classList.add('loaded');
+  });
+
+  // Navbar scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scroll on button click
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && document.querySelector(href)) {
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.closest('.faq-item');
+      const isOpen = faqItem.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(item => {
+        item.classList.remove('open');
+      });
+      if (!isOpen) {
+        faqItem.classList.add('open');
+      }
+    });
+  });
+
+  // Quote form handling
+  const quoteForm = document.getElementById('quote-form');
+  const formSuccess = document.getElementById('form-success');
+
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(quoteForm);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const response = await fetch('https://formsubmit.co/hello@atlantaluxuryroofing.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          quoteForm.classList.add('hide');
+          formSuccess.classList.add('show');
+          setTimeout(() => {
+            quoteForm.classList.remove('hide');
+            formSuccess.classList.remove('show');
+            quoteForm.reset();
+          }, 3000);
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
+"""
+
+# Write the file
+output_path = "/sessions/zealous-charming-edison/mnt/Desktop/AtlantaLuxuryRoofing/about-atlanta-luxury-roofing.html"
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+# Get file size
+file_size = os.path.getsize(output_path)
+
+print(f"✓ Generated: {output_path}")
+print(f"✓ File size: {file_size:,} bytes ({file_size / 1024:.1f} KB)")
+print(f"✓ Page includes: Hero, trust bar, story section, specialty cards, service areas, values grid")
+print(f"✓ Form action: https://formsubmit.co/hello@atlantaluxuryroofing.com")
+print(f"✓ Schema: Article + LocalBusiness + Breadcrumb")

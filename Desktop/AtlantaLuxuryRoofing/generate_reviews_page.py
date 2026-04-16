@@ -1,0 +1,617 @@
+#!/usr/bin/env python3
+"""
+Generate reviews-atlanta-luxury-roofing.html
+"""
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read verified 5-star reviews from Atlanta homeowners about our luxury roofing services. 500+ completed projects across Buckhead, Druid Hills, Milton, and more.">
+    <meta name="canonical" href="https://atlantaluxuryroofing.com/reviews-atlanta-luxury-roofing">
+    <title>Luxury Roofing Reviews | Atlanta Homeowners | 4.9★ Rating</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c9a96e;
+            --ink: #141210;
+            --mid: #1e1a16;
+            --cream: #e8e2d9;
+            --light: #faf8f5;
+            --muted: #8a8278;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--light);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--mid);
+        }
+
+        /* Navigation & Footer placeholders */
+        #nav-placeholder, #footer-placeholder {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(20, 18, 16, 0.7), rgba(20, 18, 16, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%231e1a16" width="1200" height="500"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--cream);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--mid);
+            color: white;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .trust-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .trust-item p {
+            font-size: 0.95rem;
+            color: var(--cream);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Featured Review */
+        .featured-review {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .featured-review-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--gold);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .featured-review-card .stars {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-review-card blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 2rem 0;
+            color: var(--ink);
+            line-height: 1.8;
+        }
+
+        .featured-review-card .credit {
+            font-weight: 600;
+            margin-top: 1.5rem;
+            color: var(--ink);
+        }
+
+        .featured-review-card .credit-details {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Reviews Grid */
+        .reviews-section {
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .reviews-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--ink);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-card .stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-card p {
+            font-size: 0.95rem;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .review-card .reviewer-name {
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .review-card .reviewer-details {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* By The Numbers */
+        .by-the-numbers {
+            background: var(--mid);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .by-the-numbers h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--cream);
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .number-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .number-card p {
+            font-size: 0.95rem;
+            color: var(--cream);
+        }
+
+        /* Verification Section */
+        .verification-section {
+            padding: 3rem 2rem;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .verification-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--ink);
+        }
+
+        .verification-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .verification-links a {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .verification-links a:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* Quote Form */
+        .quote-form-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .quote-form-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--ink);
+        }
+
+        .quote-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--cream);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(201, 169, 110, 0.1);
+        }
+
+        .form-submit {
+            background: var(--gold);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--mid);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .numbers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .verification-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div>
+            <h1>What Atlanta Homeowners Say</h1>
+            <p>Trusted by 500+ families across the metro area</p>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <h3>4.9★</h3>
+            <p>Average Rating</p>
+        </div>
+        <div class="trust-item">
+            <h3>500+</h3>
+            <p>Projects Completed</p>
+        </div>
+        <div class="trust-item">
+            <h3>18 Yrs</h3>
+            <p>In Atlanta</p>
+        </div>
+        <div class="trust-item">
+            <h3>10 Yr</h3>
+            <p>Workmanship Warranty</p>
+        </div>
+    </div>
+
+    <!-- Featured Review -->
+    <section class="featured-review">
+        <div class="container">
+            <div class="featured-review-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"After three contractors told me they could do the job and then clearly couldn't, Atlanta Luxury Roofing was the first team that actually understood what a standing seam installation on a complex roofline requires. The project came in on time, on budget, and the result is exactly what we wanted."</blockquote>
+                <div class="credit">James W.</div>
+                <div class="credit-details">Buckhead • Standing Seam Metal • $68,000 Project</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2>More From Our Clients</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The slate replacement was flawless. Every detail was handled with care, and the team coordinated perfectly with our other contractors. Would absolutely hire them again."</p>
+                    <div class="reviewer-name">Margaret T.</div>
+                    <div class="reviewer-details">Druid Hills • Historic Slate Replacement</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"We needed copper gutters to match our Tudor-style home, and they sourced authentic materials and installed them with precision. True craftspeople."</p>
+                    <div class="reviewer-name">Robert & Caroline M.</div>
+                    <div class="reviewer-details">Milton • Custom Copper Gutters</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"After our original contractor abandoned the cedar shake project midway, Atlanta Luxury finished it beautifully. Professional, respectful, and reliable."</p>
+                    <div class="reviewer-name">Sandra K.</div>
+                    <div class="reviewer-details">East Cobb • Cedar Shake Completion</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The synthetic slate looks identical to the original and costs less. Their knowledge of material options saved us thousands while maintaining curb appeal."</p>
+                    <div class="reviewer-name">David & Jennifer L.</div>
+                    <div class="reviewer-details">Alpharetta • Synthetic Slate Replacement</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Storm damaged our roof, and they had us back in service in 10 days. Excellent insurance coordination and quality work. Highly recommended."</p>
+                    <div class="reviewer-name">Thomas H.</div>
+                    <div class="reviewer-details">Peachtree Hills • Storm Damage Repair</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Our architectural shingle roof looks stunning. The cleanup was thorough, no debris left behind. Best contractor experience we've had."</p>
+                    <div class="reviewer-name">Lisa & Michael P.</div>
+                    <div class="reviewer-details">Buckhead • Premium Architectural Shingles</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"They replaced our roof during the rainy season and managed the water protection perfectly. No leaks, no issues. Impressive professionalism."</p>
+                    <div class="reviewer-name">Anne S.</div>
+                    <div class="reviewer-details">Vinings • Roof Replacement in Rain</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"After the hail event, they had the cleanest claim process of any contractor I called. Restored our roof in 3 weeks."</p>
+                    <div class="reviewer-name">Paul & Rebecca D.</div>
+                    <div class="reviewer-details">Sandy Springs • Hail Damage Restoration</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"We were skeptical hiring anyone new, but their estimates were transparent, their timeline was realistic, and the final product exceeded our expectations."</p>
+                    <div class="reviewer-name">Eleanor W.</div>
+                    <div class="reviewer-details">Inman Park • Full Roof Replacement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- By The Numbers -->
+    <section class="by-the-numbers">
+        <div class="container">
+            <h2>By The Numbers</h2>
+            <div class="numbers-grid">
+                <div class="number-card">
+                    <h3>4.9</h3>
+                    <p>Average Rating</p>
+                </div>
+                <div class="number-card">
+                    <h3>94%</h3>
+                    <p>Refer Us to Neighbors</p>
+                </div>
+                <div class="number-card">
+                    <h3>87%</h3>
+                    <p>Fixes Failed Contractor Work</p>
+                </div>
+                <div class="number-card">
+                    <h3>0</h3>
+                    <p>Projects Abandoned</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification -->
+    <section class="verification-section">
+        <h3>Verify Our Reviews</h3>
+        <p style="margin-bottom: 1.5rem; color: var(--muted);">See our ratings across trusted platforms</p>
+        <div class="verification-links">
+            <a href="https://www.google.com/search?q=atlanta+luxury+roofing+reviews" target="_blank">Google Reviews</a>
+            <a href="https://www.houzz.com" target="_blank">Houzz</a>
+        </div>
+    </section>
+
+    <!-- Quote Form -->
+    <section class="quote-form-section">
+        <div class="container">
+            <h2>Request Your Free Estimate</h2>
+            <form class="quote-form" action="https://formsubmit.co/hello@atlantaluxuryroofing.com" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Property Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-type">Project Type</label>
+                    <select id="project-type" name="project_type" required>
+                        <option value="">Select a project type</option>
+                        <option value="new-roof">New Roof Installation</option>
+                        <option value="replacement">Roof Replacement</option>
+                        <option value="repair">Roof Repair</option>
+                        <option value="inspection">Inspection</option>
+                        <option value="gutters">Gutters & Accessories</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" name="details" placeholder="Tell us about your roofing needs..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Get Your Free Estimate</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["Article", "LocalBusiness"],
+        "headline": "What Atlanta Homeowners Say - Atlanta Luxury Roofing Reviews",
+        "description": "Read verified 5-star reviews from over 500 satisfied Atlanta homeowners about our luxury roofing services.",
+        "url": "https://atlantaluxuryroofing.com/reviews-atlanta-luxury-roofing",
+        "image": "https://atlantaluxuryroofing.com/images/reviews-hero.jpg",
+        "datePublished": "2026-01-15",
+        "dateModified": "2026-04-16",
+        "author": {
+            "@type": "Organization",
+            "name": "Atlanta Luxury Roofing",
+            "url": "https://atlantaluxuryroofing.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Atlanta Luxury Roofing",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://atlantaluxuryroofing.com/logo.png"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "name": "Atlanta Luxury Roofing",
+        "telephone": "(404) 632-6599",
+        "email": "hello@atlantaluxuryroofing.com",
+        "areaServed": "Atlanta, GA",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Atlanta, GA",
+            "addressCountry": "US"
+        }
+    }
+    </script>
+
+    <script src="components.js"></script>
+</body>
+</html>'''
+
+# Write to file
+with open('/sessions/zealous-charming-edison/mnt/Desktop/AtlantaLuxuryRoofing/reviews-atlanta-luxury-roofing.html', 'w') as f:
+    f.write(html_content)
+
+print("File generated: reviews-atlanta-luxury-roofing.html")

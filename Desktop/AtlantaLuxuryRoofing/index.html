@@ -1272,43 +1272,47 @@
     </div>
     <div class="quote-right">
       <h3>Tell us about your home</h3>
-      <form class="quote-form" id="quoteForm" onsubmit="submitForm(event)">
+      <form class="quote-form" id="quoteForm" action="https://formsubmit.co/hello@atlantaluxuryroofing.com" method="POST">
+        <input type="hidden" name="_subject" value="New Luxury Roofing Quote Request" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
         <div class="form-row">
           <div class="form-group">
             <label>First Name</label>
-            <input type="text" placeholder="James" required />
+            <input type="text" name="first_name" placeholder="James" required />
           </div>
           <div class="form-group">
             <label>Last Name</label>
-            <input type="text" placeholder="Worthington" required />
+            <input type="text" name="last_name" placeholder="Worthington" required />
           </div>
         </div>
         <div class="form-group">
           <label>Email Address</label>
-          <input type="email" placeholder="james@example.com" required />
+          <input type="email" name="email" placeholder="james@example.com" required />
         </div>
         <div class="form-group">
           <label>Best Phone Number</label>
-          <input type="tel" placeholder="(404) 000-0000" required />
+          <input type="tel" name="phone" placeholder="(404) 000-0000" required />
         </div>
         <div class="form-group">
           <label>Property Address or Neighborhood</label>
-          <input type="text" placeholder="e.g. Buckhead, Milton, 123 Peachtree Rd" required />
+          <input type="text" name="neighborhood" placeholder="e.g. Buckhead, Milton, 123 Peachtree Rd" required />
         </div>
         <div class="form-group form-select-wrapper">
           <label>Material Interest</label>
-          <select required>
+          <select name="material" required>
             <option value="" disabled selected>Select a roofing material</option>
             <option>Standing Seam Metal</option>
             <option>Natural Slate</option>
             <option>Copper Roofing</option>
             <option>Cedar Shake</option>
+            <option>Synthetic Slate</option>
             <option>Not sure yet — would like guidance</option>
           </select>
         </div>
         <div class="form-group form-select-wrapper">
           <label>Project Timeline</label>
-          <select>
+          <select name="timeline">
             <option value="" disabled selected>When are you looking to start?</option>
             <option>Within 30 days</option>
             <option>1–3 months</option>
@@ -1318,7 +1322,7 @@
         </div>
         <div class="form-group">
           <label>Anything we should know? <span style="color:var(--muted);font-weight:300">(optional)</span></label>
-          <textarea placeholder="Historic home, specific HOA, complex roofline, previous issues with other contractors…"></textarea>
+          <textarea name="notes" placeholder="Historic home, specific HOA, complex roofline, previous issues with other contractors…"></textarea>
         </div>
         <button type="submit" class="btn-primary form-submit">Request My Free Consultation</button>
         <p class="form-note">We'll call within one business day to confirm your visit.</p>
