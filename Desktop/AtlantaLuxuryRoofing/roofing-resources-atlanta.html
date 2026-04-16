@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Roofing Resources & Guides | Atlanta Luxury Roofing</title>
+  <meta name="description" content="Expert guides on luxury roofing materials, costs, maintenance, and decision-making for Atlanta homeowners. Standing seam metal, natural slate, copper, cedar shake, and synthetic slate." />
+  <link rel="canonical" href="https://atlantaluxuryroofing.com/roofing-resources-atlanta" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atlanta Luxury Roofing" />
+  <meta property="og:title" content="Luxury Roofing Resources & Guides | Atlanta Luxury Roofing" />
+  <meta property="og:description" content="Expert guides on luxury roofing materials, costs, and decisions for Atlanta homeowners." />
+  <meta property="og:url" content="https://atlantaluxuryroofing.com/roofing-resources-atlanta" />
+  <meta name="geo.region" content="US-GA" />
+  <meta name="geo.placename" content="Atlanta, Georgia" />
+  <meta name="geo.position" content="33.7490;-84.3880" />
+  <meta name="ICBM" content="33.7490, -84.3880" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{--gold:#c9a96e;--gold-lt:#d4b87e;--ink:#141210;--mid:#1e1a16;--cream:#e8e2d9;--light:#faf8f5;--muted:#8a8278;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);}
+    #nav-placeholder{position:sticky;top:0;z-index:1000;}
+
+    .hero{position:relative;min-height:360px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--ink);overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;opacity:0.26;}
+    .hero-content{position:relative;z-index:2;max-width:700px;padding:72px 24px;}
+    .eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:16px;}
+    .hero h1 em{font-style:italic;color:var(--gold);}
+    .hero p{font-size:0.95rem;color:rgba(232,226,217,0.7);line-height:1.7;max-width:520px;margin:0 auto;}
+
+    .section{padding:72px 24px;}
+    .inner{max-width:1060px;margin:0 auto;}
+    .section-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;line-height:1.2;color:var(--ink);margin-bottom:40px;}
+
+    /* FEATURED CARDS */
+    .featured-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;margin-bottom:24px;}
+    .card{background:#fff;border:1px solid rgba(201,169,110,0.2);border-radius:4px;overflow:hidden;text-decoration:none;color:var(--ink);transition:box-shadow 0.2s;}
+    .card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);}
+    .card-img{height:200px;overflow:hidden;}
+    .card-img.tall{height:424px;}
+    .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
+    .card:hover .card-img img{transform:scale(1.03);}
+    .card-body{padding:24px;}
+    .card-tag{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+    .card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+    .card-desc{font-size:0.8rem;color:#5a5148;line-height:1.6;}
+
+    /* GRID */
+    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+
+    /* COST GUIDES */
+    .cost-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;}
+    .cost-card{background:var(--ink);border-radius:4px;padding:24px;text-align:center;text-decoration:none;}
+    .cost-card:hover{background:#1e1a16;}
+    .cost-material{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:6px;}
+    .cost-range{font-size:0.78rem;color:var(--gold);font-weight:600;margin-bottom:10px;}
+    .cost-life{font-size:0.7rem;color:rgba(232,226,217,0.45);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+    .cost-lifespan{font-size:0.82rem;color:var(--cream);}
+
+    .calc-strip{background:var(--cream);padding:52px 24px;text-align:center;}
+    .calc-strip h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--ink);margin-bottom:12px;}
+    .calc-strip p{font-size:0.9rem;color:#5a5148;margin-bottom:24px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7;}
+    .calc-strip a{display:inline-block;background:var(--gold);color:var(--ink);padding:14px 36px;font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:3px;}
+
+    .gold-banner{background:linear-gradient(135deg,var(--gold) 0%,#a8874e 100%);padding:64px 24px;text-align:center;}
+    .gold-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:400;color:var(--ink);margin-bottom:12px;}
+    .gold-banner p{font-size:0.9rem;color:rgba(20,18,16,0.7);margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto;}
+    .gold-banner a{display:inline-block;background:var(--ink);color:var(--cream);padding:14px 36px;font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:3px;}
+
+    @media(max-width:900px){.featured-grid{grid-template-columns:1fr;}.card-img.tall{height:220px;}.posts-grid{grid-template-columns:1fr 1fr;}.cost-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:600px){.posts-grid{grid-template-columns:1fr;}.cost-grid{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Atlanta Luxury Roofing</p>
+      <h1>Roofing <em>Resources</em> &amp; Guides</h1>
+      <p>Everything you need to make a confident decision about your luxury roof &mdash; materials, costs, maintenance, and the Atlanta-specific factors that matter.</p>
+    </div>
+  </section>
+
+  <!-- FEATURED POSTS -->
+  <section class="section" style="background:#fff;">
+    <div class="inner">
+      <p class="section-label">Featured Guides</p>
+      <h2 class="section-title">Start Here</h2>
+      <div class="featured-grid">
+        <a href="/roof-repair-vs-replacement-atlanta" class="card">
+          <div class="card-img tall">
+            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80" alt="Roof repair vs replacement Atlanta" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Decision Guide</p>
+            <h3 class="card-title">Repair vs. Replacement: How to Make the Right Call</h3>
+            <p class="card-desc">The framework Atlanta luxury homeowners need to evaluate their options honestly &mdash; including the 30% rule, red flags in repair estimates, and material-by-material benchmarks.</p>
+          </div>
+        </a>
+        <a href="/best-roofing-material-luxury-home-atlanta" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Best roofing material Atlanta luxury home" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Material Comparison</p>
+            <h3 class="card-title">Best Roofing Material for Atlanta Luxury Homes</h3>
+            <p class="card-desc">Honest cost-per-year analysis and material recommendations by home style and budget.</p>
+          </div>
+        </a>
+        <a href="/luxury-roofing-materials-guide-atlanta" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1558618047-f4e90e8d6d7e?auto=format&fit=crop&w=600&q=80" alt="Atlanta luxury roofing materials guide" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Complete Guide</p>
+            <h3 class="card-title">All Five Premium Materials Explained</h3>
+            <p class="card-desc">Standing seam, slate, copper, cedar shake, and synthetic slate &mdash; everything in one place.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL POSTS -->
+  <section class="section" style="background:var(--light);">
+    <div class="inner">
+      <p class="section-label">All Guides</p>
+      <h2 class="section-title">By Topic</h2>
+      <div class="posts-grid">
+        <a href="/how-long-does-a-slate-roof-last" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Slate Roofing</p>
+            <h3 class="card-title">How Long Does a Slate Roof Last in Atlanta?</h3>
+            <p class="card-desc">Hard slate, soft slate, nail sickness, and the Georgia-specific factors that determine lifespan.</p>
+          </div>
+        </a>
+        <a href="/standing-seam-metal-roof-pros-cons" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Metal Roofing</p>
+            <h3 class="card-title">Standing Seam Metal Roof Pros and Cons</h3>
+            <p class="card-desc">The honest version &mdash; including the scenarios where it&rsquo;s the wrong choice.</p>
+          </div>
+        </a>
+        <a href="/metal-roofing-hot-climate-atlanta" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Metal Roofing</p>
+            <h3 class="card-title">Metal Roofing in Atlanta&rsquo;s Hot Climate</h3>
+            <p class="card-desc">Heat performance, corrosion resistance, hail ratings, and energy savings in Georgia conditions.</p>
+          </div>
+        </a>
+        <a href="/cedar-shake-roof-maintenance-atlanta" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Cedar Shake</p>
+            <h3 class="card-title">Cedar Shake Roof Maintenance Guide for Atlanta</h3>
+            <p class="card-desc">Annual checklist, moss treatment, preservation, and when repairs stop making economic sense.</p>
+          </div>
+        </a>
+        <a href="/davinci-synthetic-slate-vs-real-slate" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Synthetic vs. Natural</p>
+            <h3 class="card-title">DaVinci Synthetic Slate vs. Natural Slate</h3>
+            <p class="card-desc">Cost, lifespan, appearance, and which situations favor each material.</p>
+          </div>
+        </a>
+        <a href="/copper-roofing-pros-cons-atlanta" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Copper Roofing</p>
+            <h3 class="card-title">Copper Roofing Pros and Cons for Atlanta Homes</h3>
+            <p class="card-desc">When copper makes sense, when it doesn&rsquo;t, and the case for accent applications.</p>
+          </div>
+        </a>
+        <a href="/when-to-replace-your-roof-atlanta" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Decision Guide</p>
+            <h3 class="card-title">When to Replace Your Roof in Atlanta</h3>
+            <p class="card-desc">Lifespan benchmarks by material, universal warning signs, and timing your replacement.</p>
+          </div>
+        </a>
+        <a href="/atlanta-roofing-permit-guide" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Permits &amp; Process</p>
+            <h3 class="card-title">Atlanta Roofing Permits: By County</h3>
+            <p class="card-desc">Fulton, Cobb, DeKalb, Cherokee, and City of Atlanta permit requirements, fees, and timelines.</p>
+          </div>
+        </a>
+        <a href="/synthetic-slate-roofing-atlanta" class="card">
+          <div class="card-body" style="padding:28px;">
+            <p class="card-tag">Synthetic Slate</p>
+            <h3 class="card-title">Synthetic Slate Roofing in Atlanta</h3>
+            <p class="card-desc">DaVinci and CertainTeed options, pricing, installation process, and comparison to natural stone.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST GUIDES -->
+  <section class="section" style="background:var(--mid);">
+    <div class="inner">
+      <p class="section-label" style="color:var(--gold);">Cost Guides</p>
+      <h2 class="section-title" style="color:var(--cream);">Pricing by Material</h2>
+      <div class="cost-grid">
+        <a href="/standing-seam-metal-roof-cost-atlanta" class="cost-card">
+          <div class="cost-material">Standing Seam Metal</div>
+          <div class="cost-range">$16&ndash;$32/sqft</div>
+          <div class="cost-life">Lifespan</div>
+          <div class="cost-lifespan">50&ndash;70 yrs</div>
+        </a>
+        <a href="/natural-slate-roof-cost-atlanta" class="cost-card">
+          <div class="cost-material">Natural Slate</div>
+          <div class="cost-range">$35&ndash;$65/sqft</div>
+          <div class="cost-life">Lifespan</div>
+          <div class="cost-lifespan">75&ndash;150 yrs</div>
+        </a>
+        <a href="/copper-roofing-atlanta" class="cost-card">
+          <div class="cost-material">Copper</div>
+          <div class="cost-range">$55&ndash;$120/sqft</div>
+          <div class="cost-life">Lifespan</div>
+          <div class="cost-lifespan">100+ yrs</div>
+        </a>
+        <a href="/cedar-shake-roofing-atlanta" class="cost-card">
+          <div class="cost-material">Cedar Shake</div>
+          <div class="cost-range">$18&ndash;$35/sqft</div>
+          <div class="cost-life">Lifespan</div>
+          <div class="cost-lifespan">30&ndash;40 yrs</div>
+        </a>
+        <a href="/synthetic-slate-roofing-atlanta" class="cost-card">
+          <div class="cost-material">Synthetic Slate</div>
+          <div class="cost-range">$12&ndash;$22/sqft</div>
+          <div class="cost-life">Lifespan</div>
+          <div class="cost-lifespan">40&ndash;55 yrs</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR CTA -->
+  <div class="calc-strip">
+    <h2>Estimate Your Roof Cost in 60 Seconds</h2>
+    <p>Interactive calculator for all five materials. Enter your home size, complexity, and material to get an instant range.</p>
+    <a href="/roofing-cost-calculator-atlanta">Try the Cost Calculator &rarr;</a>
+  </div>
+
+  <section class="gold-banner">
+    <h2>Ready to Talk to a Specialist?</h2>
+    <p>We serve Buckhead, Milton, Alpharetta, Sandy Springs, Roswell, and all of metro Atlanta.</p>
+    <a href="tel:4046326599">Call (404) 632-6599</a>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+</body>
+</html>
