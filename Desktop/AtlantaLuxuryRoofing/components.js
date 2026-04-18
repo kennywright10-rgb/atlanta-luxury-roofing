@@ -97,7 +97,7 @@
       @media (max-width: 640px) {
         #alr-footer .footer-top { grid-template-columns: 1fr; }
         .nav-cta { display: none; }
-      }
+      }h
     </style>
   `;
 
@@ -113,7 +113,7 @@
         <li><a href="/about-atlanta-luxury-roofing">About</a></li>
       </ul>
       <div class="nav-right">
-        <a href="tel:+14046326599" class="nav-phone">(404) 632-6599</a>
+        <a href="tel:+16782429769" class="nav-phone">(678) 242-9769</a>
         <a href="/contact-atlanta-luxury-roofing" class="nav-cta">Free Consultation</a>
       </div>
     </nav>
@@ -125,7 +125,7 @@
         <div class="footer-brand">
           <a href="/" class="footer-logo">Atlanta <span class="gold">Luxury</span> Roofing</a>
           <p>Specialty roofing for Atlanta's finest homes. Standing seam metal, natural slate, copper, cedar shake, and synthetic slate — installed by craftsmen who have spent careers mastering these materials.</p>
-          <p style="margin-top:14px;font-size:0.8rem;color:#8c8478;">(404) 632-6599 &nbsp;&bull;&nbsp; hello@atlantaluxuryroofing.com</p>
+          <p style="margin-top:14px;font-size:0.8rem;color:#8c8478;">(678) 242-9769 &nbsp;&bull;&nbsp; hello@atlantaluxuryroofing.com</p>
         </div>
         <div class="footer-col">
           <h5>Materials</h5>
@@ -157,7 +157,7 @@
             <li><a href="/roofing-resources-atlanta">Roofing Guides</a></li>
             <li><a href="/roof-repair-vs-replacement-atlanta">Repair vs. Replace</a></li>
             <li><a href="/contact-atlanta-luxury-roofing">Contact</a></li>
-            <li><a href="tel:+14046326599">(404) 632-6599</a></li>
+            <li><a href="tel:+16782429769">(678) 242-9769</a></li>
           </ul>
         </div>
       </div>
